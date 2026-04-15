@@ -368,7 +368,7 @@ Contributions are welcome! Here's how:
 
 1. **Fork the repository**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/CHAND-TRICKER-BOT.git
+   git clone https://github.com/chandtricker/CHAND-TRICKER-BOT.git
    ```
 
 2. **Create a feature branch**
