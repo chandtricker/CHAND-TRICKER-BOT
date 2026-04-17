@@ -5,11 +5,53 @@
 [![GitHub](https://img.shields.io/badge/GitHub-chandtricker-blue?style=flat-square&logo=github)](https://github.com/chandtricker/CHAND-TRICKER-BOT)
 [![Node.js](https://img.shields.io/badge/Node.js-v14+-green?style=flat-square&logo=node.js)](https://nodejs.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](#license)
+[![Forks](https://img.shields.io/github/forks/chandtricker/CHAND-TRICKER-BOT?style=flat-square&color=orange)](https://github.com/chandtricker/CHAND-TRICKER-BOT/fork)
+[![Stars](https://img.shields.io/github/stars/chandtricker/CHAND-TRICKER-BOT?style=flat-square&color=yellow)](https://github.com/chandtricker/CHAND-TRICKER-BOT/stargazers)
+
+---
+
+## 🍴 Fork This Project
+
+> **Apna khud ka bot banana chahte hain? Abhi fork karein!**
+
+<div align="center">
+
+### 👇 Ek Click Mein Fork Karein 👇
+
+[![Fork This Repository](https://img.shields.io/badge/🍴%20FORK%20THIS%20REPO-Click%20Here-brightgreen?style=for-the-badge&logo=github)](https://github.com/chandtricker/CHAND-TRICKER-BOT/fork)
+
+</div>
+
+### Fork Karne Ke Fayde:
+- ✅ Apna personal copy milega
+- ✅ Freely customize kar sakte hain
+- ✅ Original project ko contribute kar sakte hain
+- ✅ Apne naam se deploy kar sakte hain
+
+### Fork Karne Ka Tarika:
+
+```
+1️⃣  Upar diye gaye "FORK THIS REPO" button par click karein
+2️⃣  Apna GitHub account select karein
+3️⃣  "Create Fork" par click karein
+4️⃣  Fork ho jayega — ab clone karein aur shuru ho jayein!
+```
+
+```bash
+# Fork ke baad apne system par clone karein:
+git clone https://github.com/YOUR_USERNAME/CHAND-TRICKER-BOT.git
+cd CHAND-TRICKER-BOT
+npm install
+npm start
+```
+
+> 💡 **Tip:** Agar project pasand aaye toh ⭐ Star bhi zaroor dein!
 
 ---
 
 ## 📋 Table of Contents
 
+- [Fork This Project](#-fork-this-project)
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
@@ -367,9 +409,8 @@ Access the bot's web interface:
 Contributions are welcome! Here's how:
 
 1. **Fork the repository**
-   ```bash
-   git clone https://github.com/chandtricker/CHAND-TRICKER-BOT.git
-   ```
+
+   [![Fork This Repository](https://img.shields.io/badge/🍴%20Fork%20Now-Click%20Here-brightgreen?style=for-the-badge&logo=github)](https://github.com/chandtricker/CHAND-TRICKER-BOT/fork)
 
 2. **Create a feature branch**
    ```bash
@@ -440,6 +481,8 @@ For issues and questions:
 <div align="center">
 
 **Made with ❤️ by ChandTricker**
+
+[![Fork This Repository](https://img.shields.io/badge/🍴%20FORK%20THIS%20REPO-Support%20the%20Project-brightgreen?style=for-the-badge&logo=github)](https://github.com/chandtricker/CHAND-TRICKER-BOT/fork)
 
 [⬆ back to top](#-chand-tricker-bot)
 
