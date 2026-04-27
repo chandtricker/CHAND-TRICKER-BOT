@@ -1,0 +1,478 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHAND BOT — Login</title>
+<link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/chanddark/Image1/images/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --o1:#ff6b00;--o2:#ff8c2e;--o3:#ffb347;--o4:#fff3e8;
+  --gold:#f0a500;--gold-l:#ffeaa0;
+  --dark:#1a0e00;--dark2:#2d1a00;--dark3:#5a3e28;
+  --white:#ffffff;--off:#fff9f4;--cream:#fff4eb;
+  --bdr:#ffe5cc;--muted:#a07050;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;min-height:100vh;background:var(--off);display:flex;flex-direction:column;overflow-x:hidden;}
+
+/* PARTICLES */
+#ptx{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.pt{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(255,107,0,0.15),transparent 70%);animation:ptFloat linear infinite;}
+@keyframes ptFloat{0%{transform:translateY(110vh) scale(0);opacity:0;}8%{opacity:1;}92%{opacity:0.5;}100%{transform:translateY(-80px) scale(1.2);opacity:0;}}
+
+/* ORB BG */
+.orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.o1{width:600px;height:600px;background:radial-gradient(circle,rgba(255,107,0,0.09),transparent);top:-150px;right:-150px;animation:o1f 9s ease-in-out infinite;}
+.o2{width:450px;height:450px;background:radial-gradient(circle,rgba(240,165,0,0.06),transparent);bottom:-100px;left:-100px;animation:o2f 11s ease-in-out infinite;}
+@keyframes o1f{0%,100%{transform:translate(0,0);}50%{transform:translate(-40px,40px);}}
+@keyframes o2f{0%,100%{transform:translate(0,0);}50%{transform:translate(25px,-25px);}}
+
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:200;height:68px;
+  background:linear-gradient(108deg,#150900 0%,#2a1400 55%,#3a1c00 100%);
+  border-bottom:1px solid rgba(255,107,0,0.22);
+  display:flex;align-items:center;justify-content:space-between;padding:0 36px;
+  box-shadow:0 4px 40px rgba(0,0,0,0.4),0 1px 0 rgba(255,107,0,0.12) inset;
+  animation:hdIn 0.7s cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes hdIn{from{transform:translateY(-100%);opacity:0;}to{transform:none;opacity:1;}}
+
+.hl{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.hl-ring{
+  width:42px;height:42px;border-radius:12px;
+  background:linear-gradient(135deg,var(--o1),var(--gold));padding:2.5px;
+  box-shadow:0 0 0 1px rgba(255,107,0,0.35),0 4px 18px rgba(255,107,0,0.3);
+  transition:transform 0.3s,box-shadow 0.3s;
+}
+.hl-ring:hover{transform:scale(1.1) rotate(-4deg);box-shadow:0 0 0 1px rgba(255,107,0,0.6),0 6px 24px rgba(255,107,0,0.5);}
+.hl-ring img{width:100%;height:100%;border-radius:9.5px;object-fit:cover;display:block;}
+.hl-name{font-size:1.08em;font-weight:900;letter-spacing:2px;background:linear-gradient(90deg,#fff 0%,var(--o3) 55%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hl-tag{font-size:0.6em;font-weight:700;letter-spacing:2px;color:var(--o3);background:rgba(255,107,0,0.15);border:1px solid rgba(255,107,0,0.28);padding:2px 8px;border-radius:20px;margin-top:2px;display:block;-webkit-text-fill-color:var(--o3);}
+
+.hn{display:flex;align-items:center;gap:6px;}
+.nl{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.79em;font-weight:500;padding:7px 14px;border-radius:10px;border:1px solid transparent;transition:all 0.25s;position:relative;overflow:hidden;}
+.nl::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,107,0,0.1),rgba(255,179,71,0.05));opacity:0;transition:opacity 0.25s;border-radius:10px;}
+.nl:hover{color:#fff;border-color:rgba(255,107,0,0.3);}
+.nl:hover::before{opacity:1;}
+.nl.act{color:#fff;background:linear-gradient(135deg,rgba(255,107,0,0.22),rgba(255,140,46,0.12));border-color:rgba(255,107,0,0.38);}
+
+/* PAGE */
+.page{flex:1;display:flex;align-items:center;justify-content:center;padding:52px 20px;position:relative;z-index:1;}
+.wrap{width:100%;max-width:460px;animation:wpIn 0.85s cubic-bezier(.22,1,.36,1) 0.1s both;}
+@keyframes wpIn{from{opacity:0;transform:translateY(36px);}to{opacity:1;transform:none;}}
+
+/* HERO */
+.hero{text-align:center;margin-bottom:30px;}
+.av-wrap{position:relative;display:inline-block;margin-bottom:18px;}
+.av-ring{
+  width:98px;height:98px;border-radius:26px;
+  background:linear-gradient(145deg,var(--o1),var(--o2) 50%,var(--gold));padding:3px;
+  box-shadow:0 16px 50px rgba(255,107,0,0.4),0 2px 8px rgba(0,0,0,0.12);
+  animation:avPulse 3.2s ease-in-out infinite;
+}
+@keyframes avPulse{0%,100%{box-shadow:0 16px 50px rgba(255,107,0,0.38),0 2px 8px rgba(0,0,0,0.12);}50%{box-shadow:0 20px 60px rgba(255,107,0,0.55),0 2px 8px rgba(0,0,0,0.12),0 0 0 12px rgba(255,107,0,0.05);}}
+.av-ring img{width:100%;height:100%;border-radius:23px;object-fit:cover;display:block;}
+.av-dot{
+  position:absolute;bottom:-3px;right:-3px;
+  width:22px;height:22px;border-radius:50%;
+  background:linear-gradient(135deg,#52c41a,#95de64);
+  border:3px solid var(--white);
+  box-shadow:0 2px 10px rgba(82,196,26,0.5);
+  animation:dotPulse 2.2s ease-in-out infinite;
+}
+@keyframes dotPulse{0%,100%{box-shadow:0 2px 10px rgba(82,196,26,0.5);}50%{box-shadow:0 2px 18px rgba(82,196,26,0.8);}}
+
+.h-title{font-size:2.05em;font-weight:900;color:var(--dark);letter-spacing:1px;line-height:1.1;}
+.h-title span{background:linear-gradient(90deg,var(--o1) 0%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.h-sub{margin-top:8px;}
+.h-sub-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--cream);border:1px solid var(--bdr);border-radius:20px;
+  padding:4px 12px;font-size:0.8em;font-weight:600;color:var(--dark3);
+}
+
+/* CARD */
+.card{
+  background:var(--white);border-radius:26px;padding:40px;
+  border:1px solid var(--bdr);
+  box-shadow:0 0 0 1px rgba(255,107,0,0.04) inset,0 24px 64px rgba(255,107,0,0.1),0 4px 16px rgba(0,0,0,0.055);
+  position:relative;overflow:hidden;
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--o1),var(--o3),var(--gold),var(--o3),var(--o1));
+  background-size:300% 100%;animation:gSlide 4s linear infinite;
+}
+@keyframes gSlide{0%{background-position:0%}100%{background-position:300%}}
+.card::after{content:'';position:absolute;top:3px;left:0;right:0;height:50px;background:linear-gradient(180deg,rgba(255,107,0,0.022),transparent);pointer-events:none;}
+
+.slabel{display:flex;align-items:center;gap:10px;margin-bottom:26px;}
+.slabel-t{font-size:0.69em;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--o1);display:flex;align-items:center;gap:7px;}
+.slabel-l{flex:1;height:1px;background:linear-gradient(90deg,rgba(255,107,0,0.14),transparent);}
+
+/* ALERT */
+.alert{display:none;align-items:center;gap:10px;padding:13px 16px;border-radius:12px;margin-bottom:20px;font-size:0.85em;font-weight:500;animation:alIn 0.35s cubic-bezier(.22,1,.36,1);}
+@keyframes alIn{from{opacity:0;transform:translateY(-8px) scale(0.97);}to{opacity:1;transform:none;}}
+.ae{background:#fff1f0;border:1px solid #ffa39e;color:#cf1322;}
+.as{background:#f6ffed;border:1px solid #b7eb8f;color:#389e0d;}
+
+/* FORM */
+.frow{margin-bottom:22px;}
+.flabel{font-size:0.77em;font-weight:700;color:var(--dark3);margin-bottom:9px;letter-spacing:0.2px;display:block;}
+.ibox{
+  position:relative;background:var(--off);
+  border:2px solid var(--bdr);border-radius:14px;
+  display:flex;align-items:center;
+  transition:all 0.28s cubic-bezier(.22,1,.36,1);
+}
+.ibox:focus-within{
+  border-color:var(--o1);background:var(--white);
+  box-shadow:0 0 0 5px rgba(255,107,0,0.1),0 4px 18px rgba(255,107,0,0.09);
+  transform:translateY(-1px);
+}
+.iico{width:48px;height:52px;display:flex;align-items:center;justify-content:center;color:#d4a882;transition:color 0.25s;flex-shrink:0;}
+.ibox:focus-within .iico{color:var(--o1);}
+.finput{flex:1;height:52px;background:none;border:none;outline:none;font-family:'Poppins',sans-serif;font-size:0.93em;font-weight:500;color:var(--dark);padding:0;}
+.finput::placeholder{color:#cbb8a8;}
+.ebtn{width:48px;height:52px;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#c0a898;transition:color 0.2s;flex-shrink:0;}
+.ebtn:hover{color:var(--o1);}
+
+/* LOGIN BTN */
+.btnl{
+  width:100%;height:56px;
+  background:linear-gradient(110deg,var(--o1) 0%,var(--o2) 45%,var(--gold) 100%);
+  background-size:200% 100%;
+  border:none;border-radius:14px;color:#fff;
+  font-family:'Poppins',sans-serif;font-size:0.97em;font-weight:700;letter-spacing:0.8px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;
+  transition:all 0.35s cubic-bezier(.22,1,.36,1);
+  box-shadow:0 8px 30px rgba(255,107,0,0.38),0 2px 8px rgba(0,0,0,0.1);
+  position:relative;overflow:hidden;margin-top:8px;
+}
+.btnl::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.16),transparent);transition:left 0.5s;}
+.btnl:hover::before{left:100%;}
+.btnl:hover:not(:disabled){background-position:100% 0;transform:translateY(-3px);box-shadow:0 14px 38px rgba(255,107,0,0.48),0 4px 14px rgba(0,0,0,0.12);}
+.btnl:active:not(:disabled){transform:translateY(-1px);}
+.btnl:disabled{opacity:0.72;cursor:not-allowed;}
+
+/* DIVIDER */
+.divdr{display:flex;align-items:center;gap:14px;margin:26px 0;}
+.dl{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--bdr),transparent);}
+.dt{font-size:0.71em;font-weight:600;color:#c0a898;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;}
+
+/* SOCIALS */
+.socials{display:flex;gap:8px;}
+.soc{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:11px 8px;border-radius:12px;text-decoration:none;font-size:0.75em;font-weight:600;transition:all 0.25s cubic-bezier(.22,1,.36,1);border:1.5px solid transparent;}
+.soc:hover{transform:translateY(-3px);}
+.soc:active{transform:translateY(-1px);}
+.swa{border-color:#b7eb8f;background:#f0fff4;color:#237804;}
+.swa:hover{background:#d9f7be;box-shadow:0 6px 22px rgba(35,120,4,0.14);}
+.sfb{border-color:#91caff;background:#e6f4ff;color:#003eb3;}
+.sfb:hover{background:#bae0ff;box-shadow:0 6px 22px rgba(0,62,179,0.14);}
+.syt{border-color:#ffa39e;background:#fff1f0;color:#a8071a;}
+.syt:hover{background:#ffccc7;box-shadow:0 6px 22px rgba(168,7,26,0.14);}
+
+/* POPUP */
+.pbg{
+  position:fixed;inset:0;background:rgba(8,3,0,0.65);z-index:999;
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  backdrop-filter:blur(10px);animation:pbgIn 0.3s ease both;
+}
+@keyframes pbgIn{from{opacity:0;}to{opacity:1;}}
+.pbox{
+  background:var(--white);border-radius:28px;padding:44px 36px 34px;
+  max-width:420px;width:100%;text-align:center;position:relative;
+  box-shadow:0 32px 88px rgba(0,0,0,0.28),0 0 0 1px rgba(255,107,0,0.1);
+  animation:pIn 0.5s cubic-bezier(.34,1.56,.64,1) both;overflow:hidden;
+}
+@keyframes pIn{from{opacity:0;transform:scale(0.78) translateY(26px);}to{opacity:1;transform:none;}}
+.pbox::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--o1),var(--gold),var(--o2),var(--gold),var(--o1));background-size:300%;animation:gSlide 3s linear infinite;}
+
+.pcls{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;background:var(--cream);border:1px solid var(--bdr);color:var(--muted);cursor:pointer;font-size:0;display:flex;align-items:center;justify-content:center;transition:all 0.22s;}
+.pcls:hover{background:var(--o1);border-color:var(--o1);color:#fff;transform:rotate(90deg);}
+
+.pav{width:82px;height:82px;border-radius:20px;background:linear-gradient(135deg,var(--o1),var(--gold));padding:3px;margin:0 auto 18px;box-shadow:0 10px 34px rgba(255,107,0,0.36);}
+.pav img{width:100%;height:100%;border-radius:17px;object-fit:cover;display:block;}
+.ptitle{font-size:1.32em;font-weight:900;color:var(--dark);margin-bottom:6px;}
+.ptitle span{background:linear-gradient(90deg,var(--o1),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.pdesc{color:var(--muted);font-size:0.82em;line-height:1.7;margin-bottom:26px;}
+
+.plinks{display:flex;flex-direction:column;gap:11px;margin-bottom:20px;}
+.plnk{display:flex;align-items:center;gap:13px;padding:15px 17px;border-radius:16px;text-decoration:none;border:1.5px solid transparent;transition:all 0.28s cubic-bezier(.22,1,.36,1);text-align:left;}
+.plnk:hover{transform:translateX(5px);}
+.pl-w{background:linear-gradient(135deg,#fff5ea,#ffe8d0);border-color:rgba(255,107,0,0.15);}
+.pl-w:hover{border-color:var(--o1);box-shadow:0 4px 22px rgba(255,107,0,0.14);}
+.pl-y{background:#fff1f0;border-color:rgba(207,19,34,0.1);}
+.pl-y:hover{background:#ffccc7;border-color:#cf1322;box-shadow:0 4px 22px rgba(207,19,34,0.14);}
+.plico{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.plico-w{background:linear-gradient(135deg,var(--o1),var(--gold));}
+.plico-y{background:#ff0000;}
+.plinfo{flex:1;}
+.plname{display:block;font-weight:700;font-size:0.88em;color:var(--dark);}
+.plurl{display:block;font-size:0.71em;color:#b09080;margin-top:2px;}
+
+.pbtn{width:100%;padding:14px;background:linear-gradient(135deg,var(--o1),var(--o2));border:none;border-radius:14px;color:#fff;font-family:'Poppins',sans-serif;font-size:0.88em;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all 0.25s;letter-spacing:0.5px;box-shadow:0 6px 22px rgba(255,107,0,0.3);}
+.pbtn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,107,0,0.42);}
+
+/* FOOTER */
+footer{position:relative;z-index:1;background:linear-gradient(112deg,#150900 0%,#2a1400 55%,#3a1c00 100%);border-top:1px solid rgba(255,107,0,0.18);}
+.ftm{display:flex;align-items:center;justify-content:space-between;padding:22px 40px;flex-wrap:wrap;gap:14px;}
+.ftb-brand{display:flex;align-items:center;gap:12px;}
+.ftb-ring{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--o1),var(--o3));padding:2px;}
+.ftb-ring img{width:100%;height:100%;border-radius:8px;object-fit:cover;display:block;}
+.ftb-name{font-weight:800;font-size:0.93em;letter-spacing:2px;background:linear-gradient(90deg,#fff,var(--o3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.ftlinks{display:flex;gap:6px;flex-wrap:wrap;}
+.ftlnk{display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:9px;text-decoration:none;color:rgba(255,255,255,0.6);font-size:0.75em;font-weight:500;background:rgba(255,107,0,0.07);border:1px solid rgba(255,107,0,0.16);transition:all 0.22s;}
+.ftlnk:hover{background:rgba(255,107,0,0.18);border-color:rgba(255,107,0,0.4);color:#fff;transform:translateY(-1px);}
+.ftbot{background:rgba(0,0,0,0.25);text-align:center;padding:11px;font-size:0.71em;color:rgba(255,255,255,0.35);letter-spacing:0.3px;}
+
+/* LOADER */
+.ldr{position:fixed;inset:0;background:var(--off);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;animation:ldrOut 0.5s 0.9s ease both;}
+@keyframes ldrOut{to{opacity:0;pointer-events:none;visibility:hidden;}}
+.ldr-ring{width:58px;height:58px;border-radius:15px;background:linear-gradient(135deg,var(--o1),var(--gold));padding:3px;animation:lrPop 0.5s cubic-bezier(.34,1.56,.64,1);}
+@keyframes lrPop{from{transform:scale(0.4);opacity:0;}to{transform:scale(1);opacity:1;}}
+.ldr-ring img{width:100%;height:100%;border-radius:12px;object-fit:cover;display:block;}
+.ldr-bar{width:120px;height:3px;background:var(--bdr);border-radius:99px;overflow:hidden;}
+.ldr-fill{height:100%;width:0;background:linear-gradient(90deg,var(--o1),var(--gold));border-radius:99px;animation:lfill 0.75s 0.1s ease-out both;}
+@keyframes lfill{to{width:100%;}}
+
+@media(max-width:520px){
+  header{padding:0 18px;}
+  .hn{display:none;}
+  .card{padding:26px 20px;}
+  .ftm{justify-content:center;text-align:center;}
+  .pbox{padding:36px 22px 28px;}
+  .socials{flex-wrap:wrap;}
+}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<div class="ldr">
+  <div class="ldr-ring"><img src="https://cdn.jsdelivr.net/gh/chanddark/Image1/images/icon.png" alt=""></div>
+  <div class="ldr-bar"><div class="ldr-fill"></div></div>
+</div>
+
+<div id="ptx"></div>
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+
+<header>
+  <a href="/" class="hl">
+    <div class="hl-ring"><img src="https://cdn.jsdelivr.net/gh/chanddark/Image1/images/icon.png" alt="CHAND BOT"></div>
+    <div><div class="hl-name">CHAND BOT</div><span class="hl-tag">ADMIN PANEL</span></div>
+  </a>
+  <nav class="hn">
+    <a href="https://chandtricker.com" target="_blank" class="nl">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      Website
+    </a>
+    <a href="https://www.youtube.com/@chandtricker" target="_blank" class="nl">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon fill="#2d1a00" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+      YouTube
+    </a>
+    <a href="/login.html" class="nl act">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Login
+    </a>
+  </nav>
+</header>
+
+<div class="pbg" id="popup">
+  <div class="pbox">
+    <button class="pcls" onclick="closePopup()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="pav"><img src="https://cdn.jsdelivr.net/gh/chanddark/Image1/images/icon.png" alt="CHAND BOT"></div>
+    <div class="ptitle">Welcome to <span>CHAND BOT</span></div>
+    <p class="pdesc">Visit the official website and YouTube channel for tutorials, updates, and full support.</p>
+    <div class="plinks">
+      <a href="https://chandtricker.com" target="_blank" class="plnk pl-w">
+        <div class="plico plico-w"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <div class="plinfo"><span class="plname">Official Website</span><span class="plurl">chandtricker.com</span></div>
+        <span style="color:#ddd;font-size:20px">›</span>
+      </a>
+      <a href="https://www.youtube.com/@chandtricker" target="_blank" class="plnk pl-y">
+        <div class="plico plico-y"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></div>
+        <div class="plinfo"><span class="plname">YouTube Channel</span><span class="plurl">@chandtricker</span></div>
+        <span style="color:#ddd;font-size:20px">›</span>
+      </a>
+    </div>
+    <button class="pbtn" onclick="closePopup()">
+      Continue to Login
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </button>
+  </div>
+</div>
+
+<div class="page">
+  <div class="wrap">
+    <div class="hero">
+      <div class="av-wrap">
+        <div class="av-ring"><img src="https://cdn.jsdelivr.net/gh/chanddark/Image1/images/icon.png" alt="CHAND BOT"></div>
+        <div class="av-dot"></div>
+      </div>
+      <div class="h-title">CHAND <span>BOT</span></div>
+      <div class="h-sub">
+        <span class="h-sub-pill">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ff6b00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Admin Control Panel
+        </span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="slabel">
+        <div class="slabel-t">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Secure Login
+        </div>
+        <div class="slabel-l"></div>
+      </div>
+
+      <div class="alert ae" id="alert">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span id="alertMsg"></span>
+      </div>
+
+      <form id="lf" autocomplete="on">
+        <div class="frow">
+          <label class="flabel">Username</label>
+          <div class="ibox">
+            <div class="iico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <input class="finput" type="text" id="un" placeholder="Enter your username" required autocomplete="username">
+          </div>
+        </div>
+        <div class="frow">
+          <label class="flabel">Password</label>
+          <div class="ibox">
+            <div class="iico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+            <input class="finput" type="password" id="pw" placeholder="Enter your password" required autocomplete="current-password">
+            <button type="button" class="ebtn" onclick="togglePwd()">
+              <svg id="eico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <button type="submit" class="btnl" id="lb">
+          <svg id="bico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+          <span id="bt">Login to Dashboard</span>
+        </button>
+      </form>
+
+      <div class="divdr"><div class="dl"></div><span class="dt">Contact Developer</span><div class="dl"></div></div>
+
+      <div class="socials">
+        <a href="https://wa.me/message/63ORB7U3LWOWD1" target="_blank" class="soc swa">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href="https://www.facebook.com/CH4ND.TRICKER" target="_blank" class="soc sfb">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook
+        </a>
+        <a href="https://www.youtube.com/@chandtricker/" target="_blank" class="soc syt">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YouTube
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="ftm">
+    <div class="ftb-brand">
+      <div class="ftb-ring"><img src="https://cdn.jsdelivr.net/gh/chanddark/Image1/images/icon.png" alt="CHAND BOT"></div>
+      <span class="ftb-name">CHAND BOT</span>
+    </div>
+    <div class="ftlinks">
+      <a href="https://chandtricker.com" target="_blank" class="ftlnk">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        chandtricker.com
+      </a>
+      <a href="https://www.youtube.com/@chandtricker" target="_blank" class="ftlnk">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        YouTube
+      </a>
+      <a href="https://www.facebook.com/CH4ND.TRICKER" target="_blank" class="ftlnk">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+      <a href="https://wa.me/message/63ORB7U3LWOWD1" target="_blank" class="ftlnk">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+  <div class="ftbot">© 2026 CHAND BOT &nbsp;·&nbsp; Developed by Chand Tricker &nbsp;·&nbsp; All rights reserved</div>
+</footer>
+
+<script>
+(function(){
+  const c=document.getElementById('ptx');
+  for(let i=0;i<20;i++){
+    const p=document.createElement('div');p.className='pt';
+    const s=50+Math.random()*130;
+    p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${14+Math.random()*16}s;animation-delay:${Math.random()*22}s;`;
+    c.appendChild(p);
+  }
+})();
+
+function closePopup(){
+  const el=document.getElementById('popup');
+  el.style.transition='opacity 0.3s';el.style.opacity='0';
+  setTimeout(()=>el.style.display='none',300);
+}
+
+function togglePwd(){
+  const i=document.getElementById('pw'),ic=document.getElementById('eico');
+  if(i.type==='password'){
+    i.type='text';
+    ic.innerHTML='<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
+  }else{
+    i.type='password';
+    ic.innerHTML='<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+  }
+}
+
+document.getElementById('lf').addEventListener('submit',async(e)=>{
+  e.preventDefault();
+  const btn=document.getElementById('lb'),t=document.getElementById('bt'),ic=document.getElementById('bico');
+  const u=document.getElementById('un').value,p=document.getElementById('pw').value;
+  t.textContent='Authenticating...';
+  ic.innerHTML='<circle cx="12" cy="12" r="9" stroke-dasharray="28" stroke-dashoffset="8" style="transform-origin:center;animation:spin 0.75s linear infinite"/>';
+  btn.disabled=true;
+  try{
+    const r=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u,password:p})});
+    const d=await r.json();
+    if(d.success){
+      t.textContent='Access Granted!';
+      ic.innerHTML='<polyline points="20 6 9 17 4 12"/>';
+      btn.style.background='linear-gradient(135deg,#52c41a,#73d13d)';
+      btn.style.boxShadow='0 8px 30px rgba(82,196,26,0.4)';
+      sessionStorage.setItem('auth','true');
+      setTimeout(()=>window.location.href='/?auth=true',700);
+    }else{showAlert('Invalid username or password. Please try again.');rst();}
+  }catch(err){showAlert('Connection error. Please try again.');rst();}
+});
+
+function rst(){
+  const btn=document.getElementById('lb'),t=document.getElementById('bt'),ic=document.getElementById('bico');
+  t.textContent='Login to Dashboard';
+  ic.innerHTML='<path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/>';
+  btn.style.background='';btn.style.boxShadow='';btn.disabled=false;
+}
+
+function showAlert(m){
+  const b=document.getElementById('alert');
+  document.getElementById('alertMsg').textContent=m;
+  b.style.display='flex';setTimeout(()=>b.style.display='none',4500);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CHAND Bot Terminal</title>
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/chanddark/Image1/images/icon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      color-scheme: light;
+      background: #fff8f0;
+      color: #1f2937;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: radial-gradient(circle at top, rgba(249, 115, 22, 0.14), transparent 34%),
+                  radial-gradient(circle at 30% 18%, rgba(251, 191, 36, 0.16), transparent 22%),
+                  #fff8f0;
+    }
+    .terminal-shell {
+      width: min(1120px, 100%);
+      height: min(900px, 90vh);
+      min-height: 520px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(249, 115, 22, 0.18);
+      background: #ffffff;
+      border: 1px solid rgba(249, 115, 22, 0.18);
+      display: flex;
+      flex-direction: column;
+    }
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 20px 24px;
+      background: linear-gradient(90deg, rgba(249, 115, 22, 0.95), rgba(251, 191, 36, 0.95));
+      border-bottom: 1px solid rgba(249, 115, 22, 0.2);
+      flex: 0 0 auto;
+      color: #111827;
+    }
+    .terminal-title {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #111827;
+    }
+    .terminal-title span {
+      display: inline-flex;
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.18);
+    }
+    .terminal-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      border: none;
+      color: #1f2937;
+      background: #f59e0b;
+      padding: 12px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: transform 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
+      box-shadow: 0 10px 20px rgba(249, 115, 22, 0.12);
+    }
+    .btn:hover { transform: translateY(-1px); background: #f97316; }
+    .btn.danger { background: #fb923c; color: #ffffff; box-shadow: 0 10px 20px rgba(251, 146, 60, 0.18); }
+    .btn.danger:hover { background: #f97316; }
+    .terminal-body, .line-numbers, .output-pane {
+      min-height: 0;
+      height: 100%;
+    }
+    .terminal-body {
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr);
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow: hidden;
+    }
+    .line-numbers {
+      padding: 20px 16px 20px 22px;
+      width: 64px;
+      color: rgba(148, 163, 184, 0.9);
+      text-align: right;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+      line-height: 1.8;
+      user-select: none;
+      border-right: 1px solid rgba(249, 115, 22, 0.18);
+      background: rgba(255, 248, 240, 0.95);
+    }
+    .output-pane {
+      padding: 18px 20px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      background: #fffdf7;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #111827;
+      white-space: pre-wrap;
+      word-break: break-word;
+      scroll-behavior: smooth;
+      min-height: 0;
+    }
+    .log-entry {
+      display: grid;
+      grid-template-columns: auto auto minmax(0, 1fr);
+      gap: 10px;
+      margin-bottom: 10px;
+      padding: 10px 14px;
+      background: rgba(249, 115, 22, 0.05);
+      border-radius: 14px;
+      align-items: start;
+      word-break: break-word;
+    }
+    .log-entry span { display: inline; word-break: break-word; }
+    .log-type { font-weight: 700; letter-spacing: 0.02em; white-space: nowrap; }
+    .log-message { color: #1f2937; flex: 1; }
+    .type-ERROR { color: #c2410c; }
+    .type-SUCCESS { color: #ea580c; }
+    .type-WARN { color: #f97316; }
+    .type-COMMAND { color: #d97706; }
+    .type-EVENT { color: #f59e0b; }
+    .type-INFO { color: #fb923c; }
+    .type-FCA { color: #f97316; }
+    .type-LOG { color: #7c2d12; }
+    .terminal-status {
+      margin-top: 8px;
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+    .empty-state {
+      display: grid;
+      place-items: center;
+      color: #92400e;
+      height: 100%;
+      padding: 24px;
+      text-align: center;
+      gap: 10px;
+    }
+    .empty-state strong { color: #1f2937; }
+    @media (max-width: 860px) {
+      .terminal-body { grid-template-columns: 1fr; }
+      .line-numbers { display: none; }
+      .terminal-header {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: left;
+      }
+      .terminal-actions { justify-content: flex-start; }
+    }
+    @media (max-width: 640px) {
+      body { padding: 12px; }
+      .terminal-shell { width: 100%; height: auto; min-height: 500px; border-radius: 18px; }
+      .terminal-header { padding: 16px; }
+      .terminal-body { min-height: 340px; }
+      .output-pane { padding: 14px; font-size: 0.88rem; }
+      .btn { width: 100%; justify-content: center; }
+      .terminal-actions { gap: 10px; }
+      .terminal-body { grid-template-columns: 1fr; }
+      .line-numbers { display: none; }
+    }
+
+    /* Scroll to Bottom Button */
+    .scroll-to-bottom {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.9), rgba(251, 191, 36, 0.9));
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .scroll-to-bottom.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-to-bottom:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(249, 115, 22, 0.4);
+    }
+
+    .scroll-progress-ring {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .progress-bg {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.2);
+      stroke-width: 4;
+    }
+
+    .progress-bar {
+      fill: none;
+      stroke: #ffffff;
+      stroke-width: 4;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 0.3s ease;
+    }
+
+    .scroll-to-bottom-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 18px;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    @media (max-width: 640px) {
+      .scroll-to-bottom {
+        bottom: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+      }
+      .scroll-to-bottom-btn {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="terminal-shell">
+    <header class="terminal-header">
+      <div class="terminal-title">
+        <span></span>
+        <div>
+          <div>CHAND Bot Live Terminal</div>
+          <div class="terminal-status" id="connectionStatus">Connecting...</div>
+        </div>
+      </div>
+      <div class="terminal-actions">
+        <button class="btn" onclick="window.location.href='/'">← Back</button>
+        <button class="btn" onclick="reloadLogs()">Reload logs</button>
+        <button class="btn danger" onclick="clearLogs()">Clear logs</button>
+      </div>
+    </header>
+    <section class="terminal-body">
+      <aside class="line-numbers" id="lineNumbers">1</aside>
+      <div class="output-pane" id="terminalOutput">
+        <div class="empty-state" id="emptyState">
+          <strong>Waiting for live bot output...</strong>
+          <div>Start the bot and keep this page open to stream console logs.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/scroll-to-bottom.js"></script>
+  <script>
+    const statusEl = document.getElementById('connectionStatus');
+    const terminalEl = document.getElementById('terminalOutput');
+    const lineNumbersEl = document.getElementById('lineNumbers');
+    let emptyStateEl = null;
+    let logCount = 0;
+    let autoScroll = true;
+
+    function createEmptyState() {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'empty-state';
+      wrapper.innerHTML = `
+        <strong>Waiting for live bot output...</strong>
+        <div>Start the bot and keep this page open to stream console logs.</div>
+      `;
+      return wrapper;
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function updateLineNumbers() {
+      const count = Math.max(logCount, 1);
+      const lines = Array.from({ length: count }, (_, idx) => idx + 1).join('<br>');
+      lineNumbersEl.innerHTML = lines;
+    }
+
+    function getTypeClass(type) {
+      const key = String(type || 'LOG').toUpperCase();
+      return `type-${key}`;
+    }
+
+    function buildEntry(data) {
+      const type = escapeHtml(data.type || 'LOG');
+      const message = escapeHtml(data.message || data.msg || '');
+      return `<div class="log-entry"><span class="log-type ${getTypeClass(type)}">[${type}]</span><span class="log-message">${message}</span></div>`;
+    }
+
+    function appendLog(data) {
+      if (emptyStateEl && emptyStateEl.parentNode === terminalEl) {
+        terminalEl.removeChild(emptyStateEl);
+      }
+      terminalEl.insertAdjacentHTML('beforeend', buildEntry(data));
+      logCount += 1;
+      updateLineNumbers();
+      if (autoScroll) {
+        terminalEl.scrollTop = terminalEl.scrollHeight;
+      }
+    }
+
+    terminalEl.addEventListener('scroll', () => {
+      const atBottom = terminalEl.scrollTop + terminalEl.clientHeight >= terminalEl.scrollHeight - 10;
+      autoScroll = atBottom;
+    });
+
+    function showEmptyState() {
+      terminalEl.innerHTML = '';
+      emptyStateEl = createEmptyState();
+      terminalEl.appendChild(emptyStateEl);
+      logCount = 0;
+      updateLineNumbers();
+    }
+
+    async function loadLogs() {
+      try {
+        const res = await fetch('/api/logs');
+        const json = await res.json();
+        const logs = Array.isArray(json.logs) ? json.logs : [];
+        terminalEl.innerHTML = '';
+        logCount = 0;
+        autoScroll = true;
+        if (!logs.length) {
+          showEmptyState();
+          return;
+        }
+        logs.forEach(log => appendLog(log));
+      } catch (error) {
+        console.error('Load logs failed', error);
+        showEmptyState();
+      }
+    }
+
+    async function clearLogs() {
+      try {
+        await fetch('/api/logs/clear', { method: 'POST' });
+        showEmptyState();
+      } catch (error) {
+        console.error('Clear logs failed', error);
+      }
+    }
+
+    function scrollToTop() {
+      terminalEl.scrollTo({ top: 0, behavior: 'smooth' });
+      autoScroll = false;
+    }
+
+    function scrollToBottom() {
+      terminalEl.scrollTo({ top: terminalEl.scrollHeight, behavior: 'smooth' });
+      autoScroll = true;
+    }
+
+    function reloadLogs() {
+      loadLogs();
+    }
+
+    const socket = io();
+    socket.on('connect', () => {
+      statusEl.textContent = 'Live connection established';
+      statusEl.style.color = '#22c55e';
+    });
+    socket.on('disconnect', () => {
+      statusEl.textContent = 'Disconnected; retrying...';
+      statusEl.style.color = '#f97316';
+    });
+    socket.on('log', (data) => {
+      appendLog(data);
+    });
+    socket.on('botLoading', () => {
+      appendLog({ time: new Date().toLocaleString(), type: 'INFO', message: 'Bot is starting...' });
+    });
+
+    loadLogs();
+
+    // Scroll to Bottom Button
+    (function() {
+      'use strict';
+
+      if (window._scrollToBottomInitialized) return;
+      window._scrollToBottomInitialized = true;
+
+      class ScrollToBottom {
+        constructor() {
+          this.scrollThreshold = 200;
+          this.button = null;
+          this.progressBar = null;
+          this.ticking = false;
+
+          this.init();
+        }
+
+        init() {
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.setup());
+          } else {
+            this.setup();
+          }
+        }
+
+        setup() {
+          this.createButton();
+          if (!this.button) return;
+          this.bindEvents();
+          this.updateProgress();
+        }
+
+        createButton() {
+          const existing = document.querySelector('.scroll-to-bottom');
+          if (existing) {
+            this.button = existing;
+            this.progressBar = existing.querySelector('.progress-bar');
+            return;
+          }
+
+          const container = document.createElement('div');
+          container.className = 'scroll-to-bottom';
+          container.setAttribute('role', 'button');
+          container.setAttribute('aria-label', 'Scroll to bottom');
+          container.setAttribute('tabindex', '0');
+
+          const circumference = 2 * Math.PI * 22;
+
+          container.innerHTML = `
+            <svg class="scroll-progress-ring" viewBox="0 0 50 50">
+              <circle class="progress-bg" cx="25" cy="25" r="22"></circle>
+              <circle class="progress-bar" cx="25" cy="25" r="22"></circle>
+            </svg>
+            <button class="scroll-to-bottom-btn" aria-hidden="true">
+              <i class="fas fa-arrow-down"></i>
+            </button>
+          `;
+
+          document.body.appendChild(container);
+
+          this.button = container;
+          this.progressBar = container.querySelector('.progress-bar');
+
+          const circumferenceValue = 2 * Math.PI * 22;
+          this.progressBar.style.strokeDasharray = circumferenceValue;
+          this.progressBar.style.strokeDashoffset = circumferenceValue;
+        }
+
+        bindEvents() {
+          window.addEventListener('scroll', () => this.onScroll(), { passive: true });
+
+          if (this.button) {
+            this.button.addEventListener('click', (e) => {
+              e.preventDefault();
+              this.scrollToBottom();
+            });
+
+            this.button.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.scrollToBottom();
+              }
+            });
+          }
+        }
+
+        onScroll() {
+          if (!this.ticking) {
+            window.requestAnimationFrame(() => {
+              this.updateVisibility();
+              this.updateProgress();
+              this.ticking = false;
+            });
+            this.ticking = true;
+          }
+        }
+
+        updateVisibility() {
+          if (!this.button) return;
+          this.button.classList.add('visible');
+        }
+
+        updateProgress() {
+          const scrollY = window.scrollY || window.pageYOffset;
+          const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+          if (documentHeight <= 0) return;
+
+          const scrollPercent = Math.min(scrollY / documentHeight, 1);
+          const circumference = 2 * Math.PI * 22;
+          const offset = circumference * (1 - scrollPercent);
+
+          if (this.progressBar) {
+            this.progressBar.style.strokeDashoffset = offset;
+          }
+        }
+
+        scrollToBottom() {
+          const startPosition = window.scrollY || window.pageYOffset;
+          const targetPosition = document.documentElement.scrollHeight - window.innerHeight;
+          const distance = targetPosition - startPosition;
+          const duration = Math.min(600, Math.abs(distance) / 3);
+          const startTime = performance.now();
+
+          const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+          const animateScroll = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = easeOutCubic(progress);
+
+            window.scrollTo(0, startPosition + distance * eased);
+
+            if (progress < 1) {
+              requestAnimationFrame(animateScroll);
+            }
+          };
+
+          requestAnimationFrame(animateScroll);
+        }
+      }
+
+      window.ScrollToBottom = ScrollToBottom;
+      new ScrollToBottom();
+    })();
+  </script>
+</body>
+</html>

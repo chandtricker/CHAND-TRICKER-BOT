@@ -1,0 +1,16 @@
+{
+  "BOTNAME": "Muskan",
+  "PREFIX": ".",
+  "ADMINBOT": [
+    "61588112703542",
+    "",
+    ""
+  ],
+  "REACT_DELETE_EMOJI": "😡",
+  "PREFIX_ENABLED": true,
+  "ADMIN_ONLY_MODE": false,
+  "AUTO_ISLAMIC_POST": true,
+  "AUTO_GROUP_MESSAGE": true,
+  "TIMEZONE": "Asia/Karachi",
+  "APPROVE_ONLY": false
+}

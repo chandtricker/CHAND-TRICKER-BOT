@@ -1,0 +1,167 @@
+[02:10:55 AM || 27/04/2026] [INFO] [🔧 Initialization] Starting cookie-based authentication...
+[02:10:55 AM || 27/04/2026] [INFO] [CookieManager] ✅ Loaded 11 cookies from cookies.txt
+[02:10:55 AM || 27/04/2026] [INFO] [CookieManager] 📝 Cookie keys: sb, ps_l, ps_n, datr, dpr, ar_debug, wd, c_user, fr, xs, presence
+[02:10:55 AM || 27/04/2026] [INFO] [CookieManager] ✅ Cookies validation passed
+[02:10:55 AM || 27/04/2026] [INFO] [CookieManager] ✅ Loaded 11 cookies from cookies.txt
+[02:10:55 AM || 27/04/2026] [INFO] [CookieManager] 📝 Cookie keys: sb, ps_l, ps_n, datr, dpr, ar_debug, wd, c_user, fr, xs, presence
+[02:10:55 AM || 27/04/2026] [INFO] [CookieManager] ✅ AppState generated and saved from cookies
+[02:10:55 AM || 27/04/2026] [INFO] [CookieManager] 📊 AppState contains 11 items
+[02:10:55 AM || 27/04/2026] [INFO] [✅ Initialization] AppState generated successfully from cookies
+[02:10:55 AM || 27/04/2026] [INFO] [⏱️  Initialization] Started 6-hour appstate refresh timer
+[02:10:55 AM || 27/04/2026] [INFO] [📱 Bot Startup] AppState ready, starting bot in 3 seconds...
+[02:10:59 AM || 27/04/2026] [INFO] 
+[02:10:59 AM || 27/04/2026] [INFO] +================================================+
+[02:10:59 AM || 27/04/2026] [INFO] |   mmm  m    m   mm   mm   m mmmm               |
+[02:10:59 AM || 27/04/2026] [INFO] | m"   " #    #   ##   #"m  # #   "m             |
+[02:10:59 AM || 27/04/2026] [INFO] | #      #mmmm#  #  #  # #m # #    #             |
+[02:10:59 AM || 27/04/2026] [INFO] | #      #    #  #mm#  #  # # #    #             |
+[02:10:59 AM || 27/04/2026] [INFO] |  "mmm" #    # #    # #   ## #mmm"              |
+[02:10:59 AM || 27/04/2026] [INFO] |                                                |
+[02:10:59 AM || 27/04/2026] [INFO] |       ★  C H A N D   B O T  ★                  |
+[02:10:59 AM || 27/04/2026] [INFO] |           Facebook Messenger Bot               |
+[02:10:59 AM || 27/04/2026] [INFO] +================================================+
+[02:10:59 AM || 27/04/2026] [INFO] 
+[02:11:01 AM || 27/04/2026] [INFO] ℹ [02:11:01 AM] [INFO] COOKIES Found cookies.txt - checking for updates...
+[02:11:01 AM || 27/04/2026] [INFO] [CookieManager] ✅ Loaded 11 cookies from cookies.txt
+[02:11:01 AM || 27/04/2026] [INFO] [CookieManager] 📝 Cookie keys: sb, ps_l, ps_n, datr, dpr, ar_debug, wd, c_user, fr, xs, presence
+[02:11:01 AM || 27/04/2026] [INFO] [CookieManager] ✅ Cookies validation passed
+[02:11:01 AM || 27/04/2026] [INFO] [CookieManager] ✅ Loaded 11 cookies from cookies.txt
+[02:11:01 AM || 27/04/2026] [INFO] [CookieManager] 📝 Cookie keys: sb, ps_l, ps_n, datr, dpr, ar_debug, wd, c_user, fr, xs, presence
+[02:11:01 AM || 27/04/2026] [INFO] [CookieManager] ✅ AppState generated and saved from cookies
+[02:11:01 AM || 27/04/2026] [INFO] [CookieManager] 📊 AppState contains 11 items
+[02:11:01 AM || 27/04/2026] [INFO] ✓ [02:11:01 AM] [SUCCESS] COOKIES AppState successfully refreshed from cookies
+[02:11:01 AM || 27/04/2026] [INFO] ℹ [02:11:01 AM] [INFO] BOT Starting CHAND BOT...
+[02:11:01 AM || 27/04/2026] [INFO] ℹ [02:11:01 AM] [INFO] BOT Timezone: Asia/Karachi
+[02:11:01 AM || 27/04/2026] [INFO] ℹ [02:11:01 AM] [INFO] BOT Prefix: .
+[02:11:01 AM || 27/04/2026] [INFO] [✅ Bot Startup] Bot started successfully
+[02:11:07 AM || 27/04/2026] [INFO] [👤] Bot ID: 61575152330103
+[02:11:07 AM || 27/04/2026] [INFO] [👤] Bot Name: ▂ｯﾃ⌥✪╤╤━───╼ 🩷🪿☠️🅃🄷🄴🩷🫨😈🄺🄸🄽🄶🩵🩷🍷🄸🄽🅂🄸🄳🄴🥂🏴‍☠️🎭
+[02:11:07 AM || 27/04/2026] [INFO] ✓ [02:11:07 AM] [SUCCESS] LOGIN Successfully logged in!
+[02:11:07 AM || 27/04/2026] [INFO] [✅] Login verified - loading commands and events...
+[02:11:07 AM || 27/04/2026] [INFO] ℹ [02:11:07 AM] [INFO] LOGS Old logs directory removed
+[02:11:07 AM || 27/04/2026] [INFO] 02:11:07 AM || 27/04/2026 [COMMAND] accept.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] adc.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] add.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] admin.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] adminonly.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] age.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] ai.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] alltag.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] alluid.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] antijoin.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] antiout.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] approvallist.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] approve.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] autoban.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] autoleave.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] autosend.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] avatar.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] balance.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] ban.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] bio.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] bomber.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] bot.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] catbox.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] chromakey.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] cleanthreads.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] clearcache.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] cmd.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] color.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] convert.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] copy.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] creategroup.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] daily.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] deposit.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] engage.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] enjoy.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] filter.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] friendlist.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] friendpair.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] fyt.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] gif.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] groupadmin.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] groupban.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] groupinfo.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] help.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] help2.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] holdhand.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] hug.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] ibb.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] imagine.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] inbox.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] kick.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] kickall.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] kiss.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] lockdp.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] lockname.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] logout.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] news.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] nickname.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] out.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] outall.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] owner.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] pair.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] pair2.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] pair4.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] pair5.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] pair7.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] pair8.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] pair9.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] pakdb.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] paste.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] pending.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] personalnote.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] prefix.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] rankup.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] reload.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] resend.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] restart.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] say.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] screenshot.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] setdatagroup.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] setdatauser.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] setemoji.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] setgroupimage.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] setname.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] setnicall.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] setprefix.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] setprofile.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] spam.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] sticker.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] theme.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] threadlist.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] tid.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] tiktok.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] time.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] top.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] transfer.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] translate.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] uid.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] unapprove.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] unban.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] unbangroup.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] unsend.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] upscale.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] uptime.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] userinfo.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] virustext.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] wasted.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] watch.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] weather.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] withdraw.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [COMMAND] work.js
+[02:11:08 AM || 27/04/2026] [INFO] ✓ [02:11:08 AM] [SUCCESS] LOADER 111 commands loaded successfully
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [EVENT] Event loaded : adminchange.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [EVENT] Event loaded : autoleave.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [EVENT] Event loaded : callnotify.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [EVENT] Event loaded : lockdp.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [EVENT] Event loaded : lockname.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [EVENT] Event loaded : rankup.js
+[02:11:08 AM || 27/04/2026] [INFO] 02:11:08 AM || 27/04/2026 [EVENT] Event loaded : welcome.js
+[02:11:08 AM || 27/04/2026] [INFO] ℹ [02:11:08 AM] [INFO] REFRESH Loaded 7 events
+[02:11:08 AM || 27/04/2026] [INFO] ℹ [02:11:08 AM] [INFO] SCHEDULER All Tag disabled
+[02:11:08 AM || 27/04/2026] [INFO] ✓ [02:11:08 AM] [SUCCESS] SCHEDULER Quran Ayat + Namaz Alerts schedulers started
+[02:11:08 AM || 27/04/2026] [INFO] [✅] Bot API verified - bot is fully online and operational
+[02:11:08 AM || 27/04/2026] [INFO] ✓ [02:11:08 AM] [SUCCESS] BOT CHAND is now online!
+[02:11:08 AM || 27/04/2026] [INFO] ℹ [02:11:08 AM] [INFO] BOT Commands loaded: 111
+[02:11:08 AM || 27/04/2026] [INFO] ℹ [02:11:08 AM] [INFO] BOT Events loaded: 7

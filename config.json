@@ -1,0 +1,17 @@
+{
+  "BOTNAME": "CHAND",
+  "PREFIX": ".",
+  "ADMINBOT": [
+    "61572046778807"
+  ],
+  "REACT_DELETE_EMOJI": "😡",
+  "PREFIX_ENABLED": true,
+  "ADMIN_ONLY_MODE": false,
+  "APPROVE_ONLY": false,
+  "AUTO_ISLAMIC_POST": true,
+  "AUTO_ALL_TAG": false,
+  "ALL_TAG_INTERVAL": "1",
+  "TIMEZONE": "Asia/Karachi",
+  "ADMIN_USERNAME": "chand",
+  "ADMIN_PASSWORD": "rfvddddd"
+}
